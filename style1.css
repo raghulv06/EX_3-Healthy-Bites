@@ -1,0 +1,161 @@
+body {
+    display: flex;
+    flex-direction: column; /* Allow content to stack vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffe6f0; /* Light pink background */
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Arial Black', sans-serif;
+    position: relative; /* For absolutely positioned hearts */
+}
+
+/* Background Hearts Animation */
+.background-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.background-hearts::before,
+.background-hearts::after {
+    content: '💖'; /* Heart emoji for background */
+    position: absolute;
+    font-size: 5em; /* Large hearts */
+    opacity: 0.2; /* Subtle transparency */
+    animation: backgroundFloat 20s linear infinite;
+}
+
+.background-hearts::before {
+    left: -10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.background-hearts::after {
+    right: -10%;
+    top: 70%;
+    font-size: 7em;
+    animation-delay: 10s; /* Stagger the animation */
+}
+
+@keyframes backgroundFloat {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+    25% { transform: translate(100px, 150px) rotate(10deg); opacity: 0.25; }
+    50% { transform: translate(0, 300px) rotate(0deg); opacity: 0.3; }
+    75% { transform: translate(-100px, 150px) rotate(-10deg); opacity: 0.25; }
+    100% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between letters and heart */
+    position: relative;
+    z-index: 1; /* Keep letters above background hearts */
+}
+
+.letter, .heart {
+    font-size: 8em; /* Large font size for letters and heart */
+    font-weight: bold;
+    color: #ff69b4; /* Hot pink color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: float 3s ease-in-out infinite alternate,
+               pulse 1.5s ease-in-out infinite alternate;
+    position: relative;
+    cursor: pointer; /* Indicate interactivity */
+    transition: transform 0.2s ease-out, color 0.2s ease-out; /* Smooth transitions for hover */
+}
+
+.M {
+    animation-delay: 0s; /* Start M animation immediately */
+}
+
+.E {
+    animation-delay: 0.5s; /* Delay E animation slightly for variety */
+}
+
+.heart {
+    font-size: 6em; /* Adjust heart size relative to letters */
+    color: #ff3366; /* Red heart color */
+    animation: pulse 1s ease-in-out infinite alternate,
+               heartbeat 1s infinite;
+}
+
+/* Hover effects for letters and heart */
+.letter:hover, .heart:hover {
+    transform: scale(1.1) rotate(5deg); /* Scale up and slightly rotate on hover */
+    filter: brightness(1.2); /* Make it brighter */
+}
+
+/* Animations for letters and heart */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Click animation for letters and heart (triggered by JS adding a class) */
+.clicked {
+    animation: bounceAndFade 0.5s ease-out forwards;
+}
+
+@keyframes bounceAndFade {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2) translateY(-10px); opacity: 0.8; }
+    100% { transform: scale(0.8) translateY(20px); opacity: 0; }
+}
+
+/* Message styling */
+.message-container {
+    margin-top: 30px;
+    font-size: 2.5em;
+    color: #8a2be2; /* Blue violet for messages */
+    text-align: center;
+    min-height: 1.5em; /* Ensure it doesn't collapse */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.message-container.show {
+    opacity: 1;
+}
+
+/* Specific animations for messages (triggered by JS) */
+.message-container.zoom-fade-in {
+    animation: zoomFadeIn 1s forwards;
+}
+
+@keyframes zoomFadeIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.message-container.slide-in-up {
+    animation: slideInUp 0.8s forwards ease-out;
+}
+
+@keyframes slideInUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}

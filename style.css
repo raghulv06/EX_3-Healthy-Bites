@@ -1,0 +1,279 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styling */
+
+.site-header {
+    background-color: #4CAF50; /* A pleasant green for healthy theme */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Larger heading for the site title */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right input[type="search"] {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 1rem;
+    width: 250px; /* Adjust as needed */
+}
+
+.header-right button {
+    background-color: #333;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-right button:hover {
+    background-color: #555;
+}
+
+/* Banner Styling */
+
+.banner-section img {
+    width: 100%;
+    height: 400px; /* Fixed height for the banner */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+/* Welcome Section */
+
+.welcome-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: white;
+    margin: 2rem auto;
+    max-width: 960px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.welcome-section h2 {
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+    font-size: 2em;
+}
+
+.welcome-section p {
+    font-size: 1.1em;
+    margin-bottom: 1rem;
+}
+
+/* Recipe Gallery Styling */
+
+.recipe-gallery {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+}
+
+.recipe-gallery h2 {
+    grid-column: 1 / -1; /* Make the heading span all columns */
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 2rem;
+    font-size: 2em;
+}
+
+.gallery-item {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* Hide overflowing parts of the image/caption */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Simple hover effect */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Fixed height for gallery images */
+    object-fit: cover;
+    display: block; /* Remove extra space below images */
+}
+
+.caption-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6); /* Semi-transparent background */
+    color: white;
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.caption-box.top {
+    top: 0;
+}
+
+.caption-box.center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.caption-box.bottom {
+    bottom: 0;
+}
+
+/* Content Section Styling */
+
+.content-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.content-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.content-item.reverse {
+    flex-direction: row-reverse; /* Swap order for alternating layout */
+}
+
+.content-item img {
+    width: 50%; /* Image takes half the width */
+    height: 300px;
+    object-fit: cover;
+}
+
+.content-item .text-content {
+    width: 50%; /* Text takes the other half */
+    padding: 2rem;
+}
+
+.content-item h3 {
+    color: #4CAF50;
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+.content-item p {
+    font-size: 1.1em;
+}
+
+/* Footer Styling */
+
+.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.site-footer p {
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #4CAF50;
+}
+
+/* Responsive Design (Media Queries) */
+
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-right input[type="search"] {
+        width: 70%;
+        margin-right: 0.5rem;
+    }
+
+    .content-item, .content-item.reverse {
+        flex-direction: column; /* Stack image and text vertically */
+    }
+
+    .content-item img, .content-item .text-content {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .content-item img {
+        height: 250px; /* Adjust image height for smaller screens */
+    }
+
+    .footer-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header h1 {
+        font-size: 2em;
+    }
+
+    .welcome-section h2, .recipe-gallery h2 {
+        font-size: 1.8em;
+    }
+
+    .content-item h3 {
+        font-size: 1.5em;
+    }
+
+    .gallery-item img {
+        height: 200px; /* Further adjust gallery image height */
+    }
+}
